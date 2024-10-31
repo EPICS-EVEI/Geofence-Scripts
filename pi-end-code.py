@@ -171,13 +171,19 @@ def initialize_gps():
 def get_latitude(str_array, index):
     latDeg = float(str_array[index][0: 2])
     latMin = float(str_array[index][2: 10]) / 60
-    return '%f' % (float(latDeg) + float(latMin))
+    latitude = (float(latDeg) + float(latMin))
+    if str_array[index +1] == "S":
+        latitude = -latitude
+    return '%f' % latitude
 
 # Gets Longitude
 def get_longitude(str_array, index2):
     longDeg = float(str_array[index2][1: 3])
     longMin = float(str_array[index2][3: 11]) / 60
-    return '%f' % (float(longDeg) + float(longMin))
+    longitude = (float(longDeg) + float(longMin))
+    if str_array[index2 +1] == "E":
+        longitude = -longitude
+    return '%f' % longitude
 
 """
 def get_current_location(gps_uart):
